@@ -11,8 +11,8 @@ require_once 'connect.php';
 
 
 $customerID = $_GET['customerID'];
-//$date = $_GET['date'];
-//$time = $_GET['time'];
+$date = $_GET['date'];
+$time =  date("H:i", time());
 $pkx = $_GET['pkx'];
 $pky = $_GET['pky'];
 $pkAddress = $_GET['pkAddress'];
