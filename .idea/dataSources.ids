@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - taxi_system@localhost" uuid="02e677d9-4eb6-4c9c-af29-00c60ea3eaba">
+    <database-info product="MySQL" version="5.6.21" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="taxi_system"/>
+    <table name="customer_table" schema="" catalog="taxi_system" type="TABLE">
+      <column name="customer_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="first_name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="last_name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="telephone_number" sqlType="DECIMAL" precision="10" scale="0" nullable="true" jdbcType="3"/>
+      <primary-key name="PRIMARY" columns="customer_id"/>
+      <foreign-key name="customer_table_ibfk_1" columns="user_id" ref-table="user_table" ref-schema="" ref-catalog="taxi_system" ref-columns="user_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="feedback_table_ibfk_1" table="feedback_table" schema="" catalog="taxi_system" columns="customer_id"/>
+      <exported-key name="job_table_ibfk_3" table="job_table" schema="" catalog="taxi_system" columns="customerid"/>
+      <exported-key name="reg_customer_table_ibfk_1" table="reg_customer_table" schema="" catalog="taxi_system" columns="customer_id"/>
+      <exported-key name="reservation_table_ibfk_1" table="reservation_table" schema="" catalog="taxi_system" columns="customer_id"/>
+    </table>
+    <table name="driver_table" schema="" catalog="taxi_system" type="TABLE">
+      <column name="driver_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="first_name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="last_name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="nic" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="25" scale="0" nullable="true" jdbcType="12"/>
+      <column name="address" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="telephone_number" sqlType="DECIMAL" precision="10" scale="0" nullable="true" jdbcType="3"/>
+      <column name="license_no" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="license_exp_date" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <primary-key name="PRIMARY" columns="driver_id"/>
+      <foreign-key name="driver_table_ibfk_1" columns="user_id" ref-table="user_table" ref-schema="" ref-catalog="taxi_system" ref-columns="user_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="shedule_table_ibfk_3" table="shedule_table" schema="" catalog="taxi_system" columns="driver_id"/>
+    </table>
+    <table name="employee_table" schema="" catalog="taxi_system" type="TABLE">
+      <column name="employee_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="first_name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="last_name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="nic" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="25" scale="0" nullable="true" jdbcType="12"/>
+      <column name="address" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="telephone_number" sqlType="DECIMAL" precision="10" scale="0" nullable="true" jdbcType="3"/>
+      <column name="emp_type" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="employee_id"/>
+      <foreign-key name="employee_table_ibfk_1" columns="user_id" ref-table="user_table" ref-schema="" ref-catalog="taxi_system" ref-columns="user_id" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="feedback_table" schema="" catalog="taxi_system" type="TABLE">
+      <column name="feedback_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="customer_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="subject_name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="comment" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="num_of_rates" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="feedback_id"/>
+      <foreign-key name="feedback_table_ibfk_1" columns="customer_id" ref-table="customer_table" ref-schema="" ref-catalog="taxi_system" ref-columns="customer_id" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="job_table" schema="" catalog="taxi_system" type="TABLE">
+      <column name="job_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="customerid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="vehicle_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="ride_status" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12"/>
+      <column name="start_time" sqlType="TIME" precision="8" scale="0" nullable="true" jdbcType="92"/>
+      <column name="stop_time" sqlType="TIME" precision="8" scale="0" nullable="true" jdbcType="92"/>
+      <column name="fees" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <primary-key name="PRIMARY" columns="job_id"/>
+      <foreign-key name="job_table_ibfk_2" columns="vehicle_id" ref-table="vehicle_table" ref-schema="" ref-catalog="taxi_system" ref-columns="vehicle_id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="job_table_ibfk_3" columns="customerid" ref-table="customer_table" ref-schema="" ref-catalog="taxi_system" ref-columns="customer_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="reservation_id" unique="false" columns="customerid"/>
+    </table>
+    <table name="reg_customer_table" schema="" catalog="taxi_system" type="TABLE">
+      <column name="registered_customer_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="customer_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="nic" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="25" scale="0" nullable="true" jdbcType="12"/>
+      <column name="address" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="registered_customer_id"/>
+      <foreign-key name="reg_customer_table_ibfk_1" columns="customer_id" ref-table="customer_table" ref-schema="" ref-catalog="taxi_system" ref-columns="customer_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="reg_customer_table_ibfk_2" columns="user_id" ref-table="user_table" ref-schema="" ref-catalog="taxi_system" ref-columns="user_id" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="reservation_table" schema="" catalog="taxi_system" type="TABLE">
+      <column name="reservation_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="customer_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="date" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="time" sqlType="TIME" precision="8" scale="0" nullable="true" jdbcType="92"/>
+      <column name="pkx" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="pky" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="pk_address" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="dox" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="doy" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="do_address" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="note" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="no_of_passengers" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="distance" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="assign_vehicleid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="reservation_id"/>
+      <foreign-key name="reservation_table_ibfk_1" columns="customer_id" ref-table="customer_table" ref-schema="" ref-catalog="taxi_system" ref-columns="customer_id" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="shedule_table" schema="" catalog="taxi_system" type="TABLE">
+      <column name="vehicle_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="driver_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="date" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <primary-key name="PRIMARY" columns="date"/>
+      <foreign-key name="shedule_table_ibfk_2" columns="vehicle_id" ref-table="vehicle_table" ref-schema="" ref-catalog="taxi_system" ref-columns="vehicle_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="shedule_table_ibfk_3" columns="driver_id" ref-table="driver_table" ref-schema="" ref-catalog="taxi_system" ref-columns="driver_id" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="user_table" schema="" catalog="taxi_system" type="TABLE">
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="user_name" sqlType="CHAR" precision="25" scale="0" nullable="false" jdbcType="1"/>
+      <column name="password" sqlType="VARCHAR" precision="15" scale="0" nullable="false" jdbcType="12"/>
+      <column name="privilege_number" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="user_type" sqlType="VARCHAR" precision="25" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="user_id"/>
+      <exported-key name="customer_table_ibfk_1" table="customer_table" schema="" catalog="taxi_system" columns="user_id"/>
+      <exported-key name="driver_table_ibfk_1" table="driver_table" schema="" catalog="taxi_system" columns="user_id"/>
+      <exported-key name="employee_table_ibfk_1" table="employee_table" schema="" catalog="taxi_system" columns="user_id"/>
+      <exported-key name="reg_customer_table_ibfk_2" table="reg_customer_table" schema="" catalog="taxi_system" columns="user_id"/>
+    </table>
+    <table name="vehicle_table" schema="" catalog="taxi_system" type="TABLE">
+      <column name="vehicle_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="latitude" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="longtitude" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="plate_number" sqlType="VARCHAR" precision="25" scale="0" nullable="true" jdbcType="12"/>
+      <column name="main_status" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <column name="type" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12"/>
+      <column name="model" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12"/>
+      <column name="reservation_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="vehicle_id"/>
+      <exported-key name="job_table_ibfk_2" table="job_table" schema="" catalog="taxi_system" columns="vehicle_id"/>
+      <exported-key name="shedule_table_ibfk_2" table="shedule_table" schema="" catalog="taxi_system" columns="vehicle_id"/>
+    </table>
+  </data-source>
+</component>
