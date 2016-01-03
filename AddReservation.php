@@ -9,16 +9,20 @@
 require_once 'connect.php';
 
 
-
+//TODO time error
 $customerID = $_GET['customerID'];
-$date = $_GET['date'];
-$time =  date("H:i", time());
+$date = date("Y-m-d");
+$time =  "00:45";
 $pkx = $_GET['pkx'];
 $pky = $_GET['pky'];
 $pkAddress = $_GET['pkAddress'];
 $dox = $_GET['dox'];
 $doy =$_GET['doy'];
 $doAddress = $_GET['doAddress'];
+
+
+echo $date;
+echo $time;
 
 
 
@@ -36,8 +40,8 @@ $customerID = (int)$customerID;
 
 
 
-$myquery = "INSERT INTO reservation_table(customer_id, pkx, pky,pk_address, dox, doy,do_address)
-VALUES ($customerID,$pkx,$pky,'$pkAddress',$dox,$doy,'$doAddress')";
+$myquery = "INSERT INTO reservation_table(customer_id,date,time,pkx, pky,pk_address, dox, doy,do_address,note,no_of_passengers,distance)
+VALUES ($customerID,$date,$time,$pkx,$pky,'$pkAddress',$dox,$doy,'$doAddress','',1,0)";
 
 $query = mysql_query($myquery);
 
