@@ -16,7 +16,7 @@ require_once 'connect.php';
 
 
 
-$reservationID =     $_GET['reservationID'];
+$reservationID =    8;// $_GET['reservationID'];
 
 
 

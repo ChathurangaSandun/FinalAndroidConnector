@@ -21,8 +21,6 @@ $doy =$_GET['doy'];
 $doAddress = $_GET['doAddress'];
 
 
-echo $date;
-echo $time;
 
 
 
@@ -43,7 +41,7 @@ $customerID = (int)$customerID;
 $myquery = "INSERT INTO reservation_table(customer_id,date,time,pkx, pky,pk_address, dox, doy,do_address,note,no_of_passengers,distance)
 VALUES ($customerID,$date,$time,$pkx,$pky,'$pkAddress',$dox,$doy,'$doAddress','',1,0)";
 
-echo $myquery;
+//echo $myquery;
 
 $query = mysql_query($myquery);
 
@@ -66,6 +64,8 @@ if (!$query) {
             die;
         }else {
             $vehicleID = mysql_fetch_assoc($query)['vehicle_id'];
+
+            //echo $vehicleID;
 
             $myquery = "UPDATE vehicle_table SET reservation_id = $id WHERE vehicle_id = $vehicleID";
             $query = mysql_query($myquery);

@@ -20,5 +20,5 @@ $password = "0718256773";
 $host = "mysql.hostinger.in";
 $database = "u890863868_taxi";*/
 
-$server = mysql_connect($host, $username, $password);
-$connection = mysql_select_db($database, $server);
+@$server = mysql_connect($host, $username, $password);
+@$connection = mysql_select_db($database, $server);
