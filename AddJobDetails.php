@@ -21,7 +21,7 @@ $myquery = "SELECT vehicle_id FROM vehicle_table WHERE reservation_id = $reserva
 $query = mysql_query($myquery);
 if($query){
     $data = mysql_fetch_array($query);
-    print_r($data);
+    //print_r($data);
 }else{
     echo 0;
 }
@@ -52,7 +52,7 @@ $jobID++;
 $myquery = "INSERT INTO job_table(job_id,customerid, vehicle_id,reservation_id, ride_status,fees)
     VALUES ($jobID,$customerID,$vehicleID,$reservationID,'Start',0)";
 
-echo $myquery;
+//echo $myquery;
 $query = mysql_query($myquery);
 
 if($query){

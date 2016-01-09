@@ -27,7 +27,7 @@ if (!$query) {
     if($reservationID != 0){
        // echo $reservationID;
 
-        $myquery = "SELECT reservation_id, pk_address,do_address FROM reservation_table WHERE reservation_id = $reservationID";
+        $myquery = "SELECT reservation_id, pk_address,pkx,pky FROM reservation_table WHERE reservation_id = $reservationID";
         $query = mysql_query($myquery);
         echo json_encode(mysql_fetch_assoc($query));
 

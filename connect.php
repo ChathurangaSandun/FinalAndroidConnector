@@ -16,7 +16,7 @@ $database = "taxi_system";
 error_reporting(E_ALL ^ E_DEPRECATED);
 
 $username = "u890863868_clive";
-$password = "0718256773";
+$password = "123456789";
 $host = "mysql.hostinger.in";
 $database = "u890863868_taxi";*/
 
