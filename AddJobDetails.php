@@ -34,7 +34,7 @@ $vehicleID = $data['vehicle_id'];
 
 //TODO reservatin-Id must 0
 $myquery = "UPDATE vehicle_table SET main_status = 'Busy',reservation_id=0  WHERE vehicle_id = $vehicleID";
-//$query = mysql_query($myquery);
+$query = mysql_query($myquery);
 
 //echo $vehicleID.'<br>';
 

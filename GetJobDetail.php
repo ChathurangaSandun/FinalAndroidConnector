@@ -16,7 +16,8 @@ require_once 'connect.php';
 
 
 
-$reservationID =    8;// $_GET['reservationID'];
+$reservationID =     $_GET['reservationID'];
+//echo $reservationID;
 
 
 
@@ -24,8 +25,11 @@ $reservationID =    8;// $_GET['reservationID'];
 
 
 $myquery = "SELECT job_id,vehicle_id FROM job_table WHERE reservation_id = $reservationID";
+//echo $myquery;
 
 $query = mysql_query($myquery);
+
+
 
 
 

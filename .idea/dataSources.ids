@@ -58,18 +58,16 @@
     </table>
     <table name="job_table" schema="" catalog="taxi_system" type="TABLE">
       <column name="job_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="reservation_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="customerid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="vehicle_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="ride_status" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12"/>
-      <column name="dox" sqlType="FLOAT" precision="12" scale="0" nullable="true" jdbcType="7"/>
-      <column name="doy" sqlType="FLOAT" precision="12" scale="0" nullable="true" jdbcType="7"/>
-      <column name="do_address" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="start_time" sqlType="TIME" precision="8" scale="0" nullable="true" jdbcType="92"/>
       <column name="stop_time" sqlType="TIME" precision="8" scale="0" nullable="true" jdbcType="92"/>
       <column name="fees" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="reservation_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="job_id"/>
-      <foreign-key name="job_table_ibfk_1" columns="reservation_id" ref-table="reservation_table" ref-schema="" ref-catalog="taxi_system" ref-columns="reservation_id" update-rule="3" delete-rule="3" deferrability="2"/>
-      <foreign-key name="job_table_ibfk_2" columns="vehicle_id" ref-table="vehicle_table" ref-schema="" ref-catalog="taxi_system" ref-columns="vehicle_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="reservation_id" unique="false" columns="customerid"/>
+      <index name="vehicle_id" unique="false" columns="vehicle_id"/>
     </table>
     <table name="reg_customer_table" schema="" catalog="taxi_system" type="TABLE">
       <column name="registered_customer_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
@@ -98,7 +96,7 @@
       <column name="distance" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
       <primary-key name="PRIMARY" columns="reservation_id"/>
       <foreign-key name="reservation_table_ibfk_1" columns="customer_id" ref-table="customer_table" ref-schema="" ref-catalog="taxi_system" ref-columns="customer_id" update-rule="3" delete-rule="3" deferrability="2"/>
-      <exported-key name="job_table_ibfk_1" table="job_table" schema="" catalog="taxi_system" columns="reservation_id"/>
+      <exported-key name="unassignedjob_ibfk_1" table="unassignedjob" schema="" catalog="taxi_system" columns="reservation_id"/>
     </table>
     <table name="shedule_table" schema="" catalog="taxi_system" type="TABLE">
       <column name="vehicle_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
@@ -107,6 +105,14 @@
       <primary-key name="PRIMARY" columns="date"/>
       <foreign-key name="shedule_table_ibfk_2" columns="vehicle_id" ref-table="vehicle_table" ref-schema="" ref-catalog="taxi_system" ref-columns="vehicle_id" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="shedule_table_ibfk_3" columns="driver_id" ref-table="driver_table" ref-schema="" ref-catalog="taxi_system" ref-columns="driver_id" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="unassignedjob" schema="" catalog="taxi_system" type="TABLE">
+      <column name="reservation_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="vehicle_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="reservation_time" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <primary-key name="PRIMARY" columns="reservation_id,vehicle_id,reservation_time"/>
+      <foreign-key name="unassignedjob_ibfk_1" columns="reservation_id" ref-table="reservation_table" ref-schema="" ref-catalog="taxi_system" ref-columns="reservation_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="unassignedjob_ibfk_2" columns="vehicle_id" ref-table="vehicle_table" ref-schema="" ref-catalog="taxi_system" ref-columns="vehicle_id" update-rule="3" delete-rule="3" deferrability="2"/>
     </table>
     <table name="user_table" schema="" catalog="taxi_system" type="TABLE">
       <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
@@ -128,9 +134,10 @@
       <column name="main_status" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
       <column name="type" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12"/>
       <column name="model" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12"/>
+      <column name="reservation_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
       <primary-key name="PRIMARY" columns="vehicle_id"/>
-      <exported-key name="job_table_ibfk_2" table="job_table" schema="" catalog="taxi_system" columns="vehicle_id"/>
       <exported-key name="shedule_table_ibfk_2" table="shedule_table" schema="" catalog="taxi_system" columns="vehicle_id"/>
+      <exported-key name="unassignedjob_ibfk_2" table="unassignedjob" schema="" catalog="taxi_system" columns="vehicle_id"/>
     </table>
   </data-source>
 </component>
