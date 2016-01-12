@@ -9,7 +9,8 @@
 require 'connect.php';
 
 
-$driverId = 2;//$_GET['driverid'];
+$driverId =$_GET['driverid'];
+
 
 
 
@@ -23,16 +24,22 @@ $query = @mysql_query($myquery);
 if (!$query) {
     echo mysql_error();
     die;
+}else{
+
+
+
+   $row = mysql_fetch_array($query, MYSQL_ASSOC);
+
+    if(sizeof($row) == 1){
+        echo $row["vehicle_id"];
+    }else{
+        echo 0;
+    }
+
+
+
 }
 
-$data = array();
-
-for ($x = 0; $x < mysql_num_rows($query); $x++) {
-    $data[] = mysql_fetch_assoc($query);
-}
-if(arr){
-
-}
 
 
 

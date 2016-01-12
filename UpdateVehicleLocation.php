@@ -16,7 +16,7 @@ $id = (int)$id;
 $lat = floatval($lat);
 $lon = floatval($lon);
 
-$query = "UPDATE vehicle_table SET latitude=$lat, longtitude=$lon  WHERE vehicle_id = $id";
+$query = "UPDATE vehicle_table SET latitude=$lat, longtitude=$lon,main_status = 'available'  WHERE vehicle_id = $id";
 $result = mysql_query($query);
 
 if (!$query) {
